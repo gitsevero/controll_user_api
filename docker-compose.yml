@@ -1,0 +1,7 @@
+version: "3"
+services:
+  myapp:
+    container_name: Crud_golang
+    build: .
+    ports:
+      - "8080:8080"
