@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
+	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"log"
-	"os"
+	"main/Routes"
 )
 
 func main() {
@@ -14,5 +14,11 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
-	fmt.Println(os.Getenv("APP_ENV"))
+	router := gin.Default()
+	Routes.Routes(&router.RouterGroup)
+	err = router.Run(":8080")
+	if err != nil {
+		return
+	}
+
 }
